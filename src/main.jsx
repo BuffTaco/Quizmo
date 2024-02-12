@@ -1,10 +1,23 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import './App.css'
+import { Link } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+function Main() {
+  
+
+
+  return (
+    <>
+      
+      <h1>Quizmo</h1>
+      
+        <p>Learn your flashcards for free (leave quizlet he's not worth it)</p>
+        
+      
+      <Link to="/home"><button >Get Started</button></Link>
+      
+      
+    </>
+  )
+}
+
+export default Main
