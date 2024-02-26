@@ -10,7 +10,7 @@ function Main() {
       
       <h1>Quizmo</h1>
       
-        <p>Learn your flashcards for free (leave quizlet he's not worth it)</p>
+        <p>Learn your flashcards for free (leave quizlet he is not worth it)</p>
         
       
       <Link to="/home"><button >Get Started</button></Link>
