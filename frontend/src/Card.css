@@ -1,7 +1,19 @@
+.returnButton {
+    text-align: left;
+}
+.travelButtons {
+    
+    text-align: center;
+    position: relative;
+    width: 150vh;
+    height: 75vh;
+    
+}
 .cardContainer {
     position: relative;
     width: 150vh;
     height: 75vh;
+    text-align: center;
 }
 .card {
     position: absolute;
