@@ -13,7 +13,7 @@ function Main() {
         <p>Learn your flashcards for free (leave quizlet he is not worth it)</p>
         
       
-      <Link to="/home"><button >Get Started</button></Link>
+      <Link to="/signup"><button >Get Started</button></Link>
       
       
     </>
