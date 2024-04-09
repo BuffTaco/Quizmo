@@ -5,24 +5,53 @@ import Main from './Main.jsx'
 /*import Home from "./components/Home.jsx"
 import TestCard from './components/TestCard.jsx'*/
 import { Home, SignUp, TestCard, Login } from './components/export.js'
+
 import './index.css'
 
-export default function App() {
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const App = () => {
+  
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Main />}/>
-        <Route path="home" element={<Home/>}/>
-        <Route path="testCard" element={<TestCard />}/>
-        <Route path="signup" element={<SignUp/>}/>
-        <Route path="login" element={<Login/>}/>
+        <Route index element={<Main />}/>       
+        <Route path="/testCard" element={<TestCard />}/>
+        <Route path="/signup" element={<Home/>}/>
+        <Route path="/login" element={<Home/>}/>
+        <Route path="/home"  element={<Home/>}/>
+        
       </Routes>
     </BrowserRouter>
   )
 }
+const UnloggedApp = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Main />}/>       
+        <Route path="/testCard" element={<TestCard />}/>
+        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/home"  element={<Login/>}/>
+        
+      </Routes>
+    </BrowserRouter>
+  )
+}
+const renderApp = (isLoggedIn) => {
+  if (isLoggedIn)
+  root.render(
+    <React.StrictMode>
+      <App/>
+    </React.StrictMode>
+  )
+  else
+  root.render(
+<React.StrictMode>
+    <UnloggedApp/>
+</React.StrictMode>)
+}
+renderApp(localStorage.getItem('loggedUser') != null)
+export default renderApp
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)

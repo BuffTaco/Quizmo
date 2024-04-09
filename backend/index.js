@@ -4,6 +4,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const UserModel = require('./models/User')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const app = express()
 app.use(express.json())
@@ -14,7 +15,7 @@ mongoose.connect(process.env.MONGODB_URI)
 app.post('/signup', (req, res) => {
     const {email, password, user} = req.body
     bcrypt.hash(password, 10).then(hash => {
-        UserModel.create({email, password: hash, user})
+        UserModel.create({email, password: hash, username: user})
         .then(users => res.json(users))
         .catch(err => res.json(err))
     }).catch(err => console.log(err.message))
@@ -28,13 +29,27 @@ app.post('/login', (req, res) => {
         
         if (user) {
             bcrypt.compare(password, user.password, (err, response) => {
-                if (response) {res.json("Success")}
-                else{res.json("Incorrect password")}
+                if (response) {
+                    
+                    const userForToken = {
+                        email: email,
+                        password: password,
+                        username: user.username
+                    }
+
+                    const token = jwt.sign(
+                        userForToken,
+                        process.env.SECRET
+                    )
+                    res.status(200).send({token, username: user.username, email: email})
+            
+            }
+                else{res.status(401).json("Incorrect password")}
             })
             
         }
         else {
-            res.json("Invalid user")
+            return res.status(401).json("Invalid user")
         }
     })
 })

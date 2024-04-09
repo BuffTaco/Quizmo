@@ -36,9 +36,9 @@ function TestCard() {
     
     return (
         <>
-        <div className="returnButton">
-        <Link to="/home"><button>Home</button></Link>
-        </div>
+        
+        <Link to="/home"><button className="topLeft">Home</button></Link>
+        
         
         <div className="cardContainer">
             <div className="card" onClick={() => {

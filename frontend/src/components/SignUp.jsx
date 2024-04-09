@@ -21,20 +21,21 @@ function SignUp() {
 
     return (
         <div >
+            <Link to="/"><button className="topLeft">Main</button></Link>
             <h1>Signup</h1>
             <form onSubmit={handleSubmit}>
             <label htmlFor="email">
                 <strong>Email</strong>
             </label>
-            <input name="email" placeholder="Enter Email" onChange={(e) => setEmail(e.target.value)}/>
+            <input id="email" name="email" placeholder="Enter Email" onChange={(e) => setEmail(e.target.value)}/>
             <label htmlFor="password">
                 <strong>Password</strong>
             </label>
-            <input name="password" placeholder="Create New Password" onChange={(e) => setPassword(e.target.value)}/>
+            <input id="password" name="password" placeholder="Create New Password" onChange={(e) => setPassword(e.target.value)}/>
             <label htmlFor="user">
                 <strong>Username</strong>
             </label>
-            <input name="user" placeholder="Create Username" onChange={(e) => setUser(e.target.value)}/>
+            <input id="user" name="user" placeholder="Create Username" onChange={(e) => setUser(e.target.value)}/>
             <br/>
             <button type="submit" className="submitButton">Sign up</button>
             </form>
