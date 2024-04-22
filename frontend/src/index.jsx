@@ -1,17 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom"
 import Main from './Main.jsx'
 /*import Home from "./components/Home.jsx"
 import TestCard from './components/TestCard.jsx'*/
-import { Home, SignUp, TestCard, Login } from './components/export.js'
+import { Home, SignUp, TestCard, Login, MakeSet } from './components/export.js'
 
 import './index.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const App = () => {
-  
+
   return (
     <BrowserRouter>
       <Routes>
@@ -20,6 +20,7 @@ const App = () => {
         <Route path="/signup" element={<Home/>}/>
         <Route path="/login" element={<Home/>}/>
         <Route path="/home"  element={<Home/>}/>
+        <Route path="/makeset" element={<MakeSet/>}/>
         
       </Routes>
     </BrowserRouter>
@@ -34,6 +35,7 @@ const UnloggedApp = () => {
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/home"  element={<Login/>}/>
+        
         
       </Routes>
     </BrowserRouter>

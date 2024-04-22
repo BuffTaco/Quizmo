@@ -12,25 +12,38 @@ app.use(cors())
 
 mongoose.connect(process.env.MONGODB_URI)
 
+//process signup request
 app.post('/signup', (req, res) => {
     const {email, password, user} = req.body
+    //create new user w/ hashed password, save in database
     bcrypt.hash(password, 10).then(hash => {
         UserModel.create({email, password: hash, username: user})
         .then(users => res.json(users))
-        .catch(err => res.json(err))
+        .catch(err => {
+            
+            if (err instanceof mongoose.Error.ValidationError)
+            {res.status(403).json("Duplicate Username")}
+            else {
+                res.json(err)
+            }
+            
+        })
     }).catch(err => console.log(err.message))
     
 })
+//process login requets
 app.post('/login', (req, res) => {
     const {email, password}  = req.body
+    //find user w/ email
     UserModel.findOne({email: email})
     .then(user => {
         
-        
+        //confirm correct password
         if (user) {
             bcrypt.compare(password, user.password, (err, response) => {
                 if (response) {
                     
+                    //create/send token and user in response
                     const userForToken = {
                         email: email,
                         password: password,
@@ -52,6 +65,13 @@ app.post('/login', (req, res) => {
             return res.status(401).json("Invalid user")
         }
     })
+})
+app.get('/users', (req, res) => {
+    UserModel.find({}).then(users => res.json(users))
+})
+//add new set
+app.post('/sets', (req, res) => {
+    
 })
 
 app.listen(3001, () => {

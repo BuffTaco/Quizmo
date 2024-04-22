@@ -41,7 +41,7 @@ function TestCard() {
         
         
         <div className="cardContainer">
-            <div className="card" onClick={() => {
+            <div className="card" onClick={() => { //toggle activeness (css rotation)
                 setActiveness(activeness == 'active' ? 'not' : 'active')
                 }}  id={activeness}>
                 <div  className="front">{front}</div>
@@ -52,6 +52,7 @@ function TestCard() {
             <br/>
             <button onClick={() => {
                 index--;
+                //travel through all cards, reset if reach ends
                 if (index >= 0)
                 {
                     

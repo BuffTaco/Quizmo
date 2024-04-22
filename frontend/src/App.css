@@ -1,11 +1,28 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0rem;
   text-align: center;
+}
+.bottomLeft {
+  position: fixed;
+  left: 0vw;
+  bottom: 1vh;
+  
 }
 .topLeft {
   position: fixed;
   left: 0vw;
   top: 1vh;
+  
 }
+.stacks {
+  width: 70vw;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2vh;
+  flex-wrap: wrap;
+}
+
+

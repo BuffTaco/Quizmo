@@ -1,7 +1,8 @@
-function Cards() {
+import '../componentsStyle/Cards.css'
+const Cards = ({name}) => {
     return (
-        <div>
-            
+        <div className="stackOuter">
+            <h2>{name}</h2>
         </div>
     )
 }

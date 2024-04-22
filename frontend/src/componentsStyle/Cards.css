@@ -1,0 +1,15 @@
+.stackOuter {
+    background-color: white;
+    width: 20vw;
+    height: 25vh;
+    text-wrap: wrap;
+    overflow-wrap: break-word;
+    border-radius: 5px;
+    padding: 1vh;
+    color: rgb(14, 72, 14);
+    
+}
+.stackOuter:hover {
+    
+    border: 1px solid green;
+}
