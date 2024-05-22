@@ -16,7 +16,7 @@ function Home() {
 
     useEffect(() => {
         navigate('/home')
-        console.log("build??")
+        
         services.getSets(token).then(res => setShown(res.data))
         .catch(err => console.log(err))
         

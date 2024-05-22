@@ -76,8 +76,14 @@ app.get('/users', (req, res) => {
     UserModel.find({}).then(users => res.json(users))
     .catch(err => console.log(err))
 })
+//all sets
+app.get('/sets/all', (req, res) => {
+    SetModel.find({}).then(sets => {
+        res.json(sets)
+    })
+    .catch(err => console.log(err))
+})
 //add new set
-
     app.post('/sets', userExtractor, (req, res) => {
     const {title, description, cards, username} = req.body
     
@@ -92,17 +98,12 @@ app.get('/users', (req, res) => {
         })
         .then(set => {
             //add set to the creator's list of sets
-            UserModel.updateOne({username: req.user.username}, {$push: {sets: set.id}}).then(user => console.log(user)).catch(err => console.log(err))
+            UserModel.updateOne({username: req.user.username}, {$push: {sets: set.id}}).then(user => {return}).catch(err => console.log(err))
             res.json(set)
         
         })
-        .catch(err => console.log(err))
-    
-   
-    
-    
+        .catch(err => console.log(err))  
 })
-
 
 app.get('/sets', userExtractor, (req, res) => {
     
@@ -126,6 +127,8 @@ app.get('/sets/:setId', userExtractor, (req, res) => {
         .catch(err => console.log(err))
     })
 })
+
+
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
