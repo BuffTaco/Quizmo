@@ -1,9 +1,12 @@
 import '../componentsStyle/Cards.css'
-const Cards = ({name}) => {
+import { Link } from "react-router-dom"
+const Cards = ({name, setId}) => {
+    const link = `/cardset/${setId}`
     return (
-        <div className="stackOuter">
+        
+        <Link to={link}><div className="stackOuter">
             <h2>{name}</h2>
-        </div>
+        </div></Link>
     )
 }
 export default Cards

@@ -2,11 +2,16 @@ const mongoose = require('mongoose')
 
 const SetSchema = new mongoose.Schema({
     title: String,
+    description: String,
     cards: [{
         front: String,
         back: String
     }],
-    user: String
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    
+    }
 })
 SetSchema.set('toJSON', {
     transform: (document, returnedObject) => {

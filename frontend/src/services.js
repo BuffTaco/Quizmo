@@ -1,0 +1,31 @@
+import axios from 'axios'
+const baseUrl = 'http://localhost:3001'
+
+const getSets = (token) => {
+    return axios.get(`${baseUrl}/sets`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+    
+}
+const getSet = (token, setId) => {
+    return axios.get(`${baseUrl}/sets/${setId}`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+}
+const login = (email, password) => {
+    return axios.post(`${baseUrl}/login`, {email, password})
+}
+const signup = (email, password, user) => {
+    return axios.post(`${baseUrl}/signup`, {email, password, user})
+}
+const createSet = (token, title, description, cards, username) => {
+    return axios.post(`${baseUrl}/sets`, {title, description, cards, username}, 
+    {headers: {Authorization: `Bearer ${token}`}})
+}
+
+
+export default { getSets, getSet, login, createSet, signup }

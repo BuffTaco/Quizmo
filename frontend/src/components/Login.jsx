@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react'
-import axios from 'axios'
+import services from '../services'
 import '../componentsStyle/SignUp.css'
 import renderApp from '../index'
 
@@ -15,7 +15,7 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault()
         //backend process credentials
-        axios.post('http://localhost:3001/login', {email, password})
+        services.login(email, password)
         .then(result => {console.log(result)
 
                 //add user to local storage, navigate to home page
@@ -31,7 +31,7 @@ function Login() {
     }
     return (
         <div>
-            <Link to="/"><button className="topLeft">Main</button></Link>
+            <Link to="/"><button className="topLeft">Back</button></Link>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
             <label htmlFor="email">

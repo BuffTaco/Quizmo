@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from 'react'
 import '../componentsStyle/SignUp.css'
-import axios from 'axios'
+import services from '../services'
 
 
 function SignUp() {
@@ -17,7 +17,7 @@ function SignUp() {
     const handleSubmit = (e) => {
         e.preventDefault()
         //send credentials to backend, then navigate to login page
-        axios.post('http://localhost:3001/signup', {email, password, user})
+        services.signup(email, password, user)
         .then(result => {console.log(result)
         navigate('/login')
         })
@@ -36,7 +36,7 @@ function SignUp() {
 
     return (
         <div >
-            <Link to="/"><button className="topLeft">Main</button></Link>
+            <Link to="/"><button className="topLeft">Back</button></Link>
             <h1>Signup</h1>
             <form onSubmit={handleSubmit}>
             <label htmlFor="email">

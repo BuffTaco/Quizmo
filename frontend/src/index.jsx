@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom"
 import Main from './Main.jsx'
 /*import Home from "./components/Home.jsx"
 import TestCard from './components/TestCard.jsx'*/
-import { Home, SignUp, TestCard, Login, MakeSet } from './components/export.js'
+import { Home, SignUp, TestCard, Login, MakeSet, CardSet } from './components/export.js'
 
 import './index.css'
 
@@ -21,9 +21,11 @@ const App = () => {
         <Route path="/login" element={<Home/>}/>
         <Route path="/home"  element={<Home/>}/>
         <Route path="/makeset" element={<MakeSet/>}/>
+        <Route path="/cardset/:setId" element={<CardSet/>}/>
         
       </Routes>
     </BrowserRouter>
+    
   )
 }
 const UnloggedApp = () => {

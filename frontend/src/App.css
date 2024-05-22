@@ -18,11 +18,14 @@
 }
 .stacks {
   width: 70vw;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
+  
+  text-align: left;
   margin-top: 2vh;
-  flex-wrap: wrap;
+}
+.stacks * {
+  display: inline-block;
+  margin: .5vh;
+  text-align: center;
 }
 
 

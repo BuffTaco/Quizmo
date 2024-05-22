@@ -2,12 +2,12 @@
 
 .createSet {
     text-align: center;
-    left: 1vw;
+    margin-bottom: 1vh;
     
 }
 #createNew {
     position: relative;
-    left: 50%;
+    margin-bottom: 1vh;
     
     
 }
@@ -15,12 +15,10 @@ input {
     margin-left: 0px;
     border-radius: 5px;
     width: 30vw;
-
 }
+
 .addNewCard {
     
-
-    border: 1px solid rgb(7, 60, 7);
     border-radius: 10px;
     padding: 1vw;
     padding-top: 0.5vh;
@@ -28,6 +26,23 @@ input {
     margin-bottom: 1vh;
    
 }
-.addNewCard h3 {
-    margin: 1vh;
+.addNewCard h2 {
+    text-align: left;
+}
+.addedCard {
+    
+    border: 1px solid green;
+    min-height: 15vh;
+    width: 70%;
+    background-color: white;
+    padding: 0vh 2vw 4vh 2vw;
+    margin: 1vh auto;
+}
+#currentUser {
+    position: fixed;
+    right: 2vw;
+    top: 0vh;
+}
+.title{
+    margin-top: 1vh;
 }
