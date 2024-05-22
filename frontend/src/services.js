@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001'
+const baseUrl = ''
 
 const getSets = (token) => {
     return axios.get(`${baseUrl}/sets`, {
