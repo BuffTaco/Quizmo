@@ -13,12 +13,17 @@ function Home() {
 
     //sets shown on-screen
     const [shown, setShown] = useState(null)
+    const [filtered, setFiltered] = useState([])
+    const [searchText, setSearchText] = useState("")
 
     useEffect(() => {
         navigate('/home')
         
         services.getSets(token).then(res => setShown(res.data))
         .catch(err => console.log(err))
+        
+        
+        
         
         
     }, [])
@@ -29,6 +34,10 @@ function Home() {
         renderApp(false)
         navigate('/login')
 
+    }
+    const search = (text) => {
+        services.searchSet(text).then(res => setFiltered(res.data))
+        .catch(err => console.log(err))
     }
     if (shown == null)
     {
@@ -65,10 +74,18 @@ function Home() {
         </div>
         
         <h2>Search sets:</h2>
-        <form id="search">
-        <input placeholder="Enter Set Title"/>
+        <form id="search" onSubmit={(event) => {event.preventDefault(); search(searchText)}}
+        >
+        <input placeholder="Enter Set Title" onChange={(e) => setSearchText(e.target.value)}/>
         <button>Search</button>
         </form>
+        <div className="stacks">
+        {
+            filtered.map(set => {
+                return <Cards key={set.id} name={set.title} setId={set.id}/>
+            })
+        }
+        </div>
         </>
     )
 

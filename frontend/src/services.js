@@ -1,5 +1,6 @@
 import axios from 'axios'
-const baseUrl = ''
+const baseUrl = 'http://localhost:3001'
+
 
 const getSets = (token) => {
     return axios.get(`${baseUrl}/sets`, {
@@ -16,6 +17,9 @@ const getSet = (token, setId) => {
         }
     })
 }
+const searchSet = (word) => {
+    return axios.get(`${baseUrl}/searchSets/${word}`)
+}
 const login = (email, password) => {
     return axios.post(`${baseUrl}/login`, {email, password})
 }
@@ -28,4 +32,4 @@ const createSet = (token, title, description, cards, username) => {
 }
 
 
-export default { getSets, getSet, login, createSet, signup }
+export default { getSets, getSet, login, createSet, signup, searchSet }

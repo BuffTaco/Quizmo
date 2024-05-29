@@ -72,13 +72,22 @@ app.post('/login', (req, res) => {
         }
     })
 })
+//get all users
 app.get('/users', (req, res) => {
     UserModel.find({}).then(users => res.json(users))
     .catch(err => console.log(err))
 })
-//all sets
-app.get('/sets/all', (req, res) => {
-    SetModel.find({}).then(sets => {
+//get all sets
+app.get('/searchSets/:word', (req, res) => {
+    
+    SetModel.find({
+        $or:
+        [ 
+            {"title": {$regex: `${req.params.word}`, $options: 'i'}},
+            {"description": {$regex: `${req.params.word}`, $options: 'i'}}
+        ]
+        }).then(sets => {
+        
         res.json(sets)
     })
     .catch(err => console.log(err))
@@ -104,7 +113,7 @@ app.get('/sets/all', (req, res) => {
         })
         .catch(err => console.log(err))  
 })
-
+//get all user's sets
 app.get('/sets', userExtractor, (req, res) => {
     
     UserModel.findOne({username: req.user.username}).then(user => {
@@ -117,6 +126,7 @@ app.get('/sets', userExtractor, (req, res) => {
     })
     
 })
+//get specific set
 app.get('/sets/:setId', userExtractor, (req, res) => {
     UserModel.findOne({username: req.user.username}).then(user => {
         
